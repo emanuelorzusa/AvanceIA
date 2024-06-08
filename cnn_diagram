@@ -1,0 +1,24 @@
+digraph {
+	Input [label="Input
+(shape=(X_train.shape[1], 1))"]
+	Conv1D_1 [label="Conv1D
+(filters=64, kernel_size=3, activation=\"relu\")"]
+	Input -> Conv1D_1
+	MaxPooling1D_1 [label="MaxPooling1D
+(pool_size=2)"]
+	Conv1D_1 -> MaxPooling1D_1
+	Conv1D_2 [label="Conv1D
+(filters=128, kernel_size=3, activation=\"relu\")"]
+	MaxPooling1D_1 -> Conv1D_2
+	MaxPooling1D_2 [label="MaxPooling1D
+(pool_size=2)"]
+	Conv1D_2 -> MaxPooling1D_2
+	Flatten [label=Flatten]
+	MaxPooling1D_2 -> Flatten
+	Dense_1 [label="Dense
+(units=100, activation=\"relu\")"]
+	Flatten -> Dense_1
+	Output [label="Dense
+(units=1, activation=\"sigmoid\")"]
+	Dense_1 -> Output
+}
